@@ -290,6 +290,18 @@ namespace ListViewSorter
                     return -1;
                 }
             }
+            else if (DateTime.TryParse((string)x, out var xDateTime)
+              && DateTime.TryParse((string)y, out var yDateTime))
+            {
+                try
+                {
+                    return base.Compare(xDateTime, yDateTime);
+                }
+                catch
+                {
+                    return -1;
+                }
+            }
             else
             {
                 return base.Compare(x, y);
